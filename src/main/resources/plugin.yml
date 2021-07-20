@@ -1,0 +1,4 @@
+name: Survival
+version: ${project.version}
+main: de.mvnuuh.minecraft.Minecraft
+api-version: 1.17
