@@ -9,10 +9,17 @@ import org.bukkit.entity.Player;
 public class LevelCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args[0] == null){sender.sendMessage("§7[§cError§7]§r Verwendung: §6/level §e<Spieler>"); return true;}
-        if(Bukkit.getPlayer(args[0])==null){sender.sendMessage("§7[§cError§7]§r Der Spieler wurde nicht gefunden.");return true;}
+        if(args.length == 0){
+            sender.sendMessage("§7[§bLevel§7]§r Dein Level beträgt §6"+((Player) sender).getLevel()+"§r.");
+            return true;
+        }
         Player target = Bukkit.getPlayer(args[0]);
-        sender.sendMessage("§7[§bLevel§7]§r Das Level von §6"+target.getName()+"§r beträgt §6"+target.getLevel());
+        if(target==null) {
+            sender.sendMessage("§7[§cError§7]§r Der Spieler wurde nicht gefunden.");
+            return true;
+        }
+        sender.sendMessage("§7[§bLevel§7]§r Das Level von §6"+target.getName()+"§r beträgt §6"+target.getLevel()+"§r.");
         return true;
+
     }
 }

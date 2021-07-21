@@ -9,6 +9,11 @@ commands:
     usage: /ip <Spieler>
   test:
     description: Testet das Plugin.
+    usage: /test
   bc:
     description: Broadcasts to every player.
     permission: survival.broadcast
+    usage: /bc <Nachricht>
+  level:
+    description: Zeigt das Level eines Spielers.
+    usage: /level <Spieler>

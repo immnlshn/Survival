@@ -21,7 +21,6 @@ public final class Survival extends JavaPlugin {
         getCommand("test").setExecutor(new TestCommand());
         getCommand("bc").setExecutor(new BroadcastCommand());
         getCommand("level").setExecutor(new LevelCommand());
-
     }
 
     @Override
