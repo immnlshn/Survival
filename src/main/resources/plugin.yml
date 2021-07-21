@@ -2,3 +2,13 @@ name: Survival
 version: ${project.version}
 main: de.mvnuuh.minecraft.survival.Survival
 api-version: 1.17
+commands:
+  ip:
+    permission: survival.ip
+    description: Zeigt die IP-Adresse von einem Spieler.
+    usage: /ip <Spieler>
+  test:
+    description: Testet das Plugin.
+  bc:
+    description: Broadcasts to every player.
+    permission: survival.broadcast
