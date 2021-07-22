@@ -4,6 +4,7 @@ import de.mvnuuh.minecraft.survival.commands.BroadcastCommand;
 import de.mvnuuh.minecraft.survival.commands.LevelCommand;
 import de.mvnuuh.minecraft.survival.commands.TestCommand;
 import de.mvnuuh.minecraft.survival.commands.ipCommand;
+import de.mvnuuh.minecraft.survival.listener.BlockMined;
 import de.mvnuuh.minecraft.survival.listener.JoinQuitListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,5 +32,6 @@ public final class Survival extends JavaPlugin {
    private void ListenerRegistration(){
         PluginManager pluginmanager = Bukkit.getPluginManager();
         pluginmanager.registerEvents(new JoinQuitListener(), this);
+        pluginmanager.registerEvents(new BlockMined(), this);
     }
 }
