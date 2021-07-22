@@ -1,12 +1,15 @@
 package de.mvnuuh.minecraft.survival.scoreboard;
 
+import de.mvnuuh.minecraft.survival.Survival;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class Scoreboard extends ScoreboardBuilder{
     public Scoreboard(Player p) {
         super(p, "§c✖ §5§n"+p.getName()+" §r§c✖");
+        run();
     }
 
     @Override
@@ -28,6 +31,7 @@ public class Scoreboard extends ScoreboardBuilder{
         setScore("  ",2);
         setScore("§c⤛ §fHosted by §9noga§7.§9one §c⤜",1);
         setScore(" ",0);
+
     }
 
     public void updateBlocks(Player player){
@@ -44,4 +48,21 @@ public class Scoreboard extends ScoreboardBuilder{
     public void update() {
 
     }
+
+    private void run(){
+        new BukkitRunnable(){
+            @Override
+            public void run(){
+                long i = 0;
+                for(Material m : Material.values()){
+                    if(m.isSolid()){
+                        i = i+player.getStatistic(Statistic.MINE_BLOCK, m);
+                    }
+                }
+                setScore("§e"+String.valueOf(i),5);
+                setScore("§c"+player.getStatistic(Statistic.DEATHS),8);
+            }
+        }.runTaskTimer(Survival.getInstance(), 20,20);
+    }
+
 }

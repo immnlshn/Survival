@@ -1,5 +1,6 @@
 package de.mvnuuh.minecraft.survival.listener;
 
+import de.mvnuuh.minecraft.survival.scoreboard.Nametag;
 import de.mvnuuh.minecraft.survival.scoreboard.Scoreboard;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -16,6 +17,7 @@ public class JoinQuitListener implements Listener {
         event.setJoinMessage(ChatColor.GRAY+"["+ChatColor.GREEN+"+"+ChatColor.GRAY+"]"+ChatColor.WHITE+" "+p.getName());
         p.sendMessage("§7[§eSurvival§7]§r Willkommen und Viel Spaß.");
         new Scoreboard(p);
+        new Nametag(p);
     }
 
     @EventHandler

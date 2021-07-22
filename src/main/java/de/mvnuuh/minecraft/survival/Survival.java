@@ -14,6 +14,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Survival extends JavaPlugin {
 
+
+
+    private static Survival instance;
+
+    @Override
+    public void onLoad(){
+        instance = this;
+    }
+
     @Override
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage("§7[§eSurvival§7]§r Coded by "+ChatColor.GOLD+"maaanuuuuu");
@@ -33,5 +42,9 @@ public final class Survival extends JavaPlugin {
         PluginManager pluginmanager = Bukkit.getPluginManager();
         pluginmanager.registerEvents(new JoinQuitListener(), this);
         pluginmanager.registerEvents(new BlockMined(), this);
+    }
+
+    public static Survival getInstance() {
+        return instance;
     }
 }
