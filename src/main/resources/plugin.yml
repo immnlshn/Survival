@@ -4,16 +4,22 @@ main: de.mvnuuh.minecraft.survival.Survival
 api-version: 1.17
 commands:
   ip:
-    permission: survival.ip
     description: Zeigt die IP-Adresse von einem Spieler.
     usage: /ip <Spieler>
+    permission: survival.ip
+  bc:
+    description: Schickt eine Nachricht an jeden Spieler.
+    usage: /bc <Nachricht>
+    permission: survival.broadcast
+  stats:
+    description: Zeigt die Statistiken eines Spielers.
+    usage: /stats <Spieler>
+  togglescoreboard:
+    description: Schaltet das Scoreboard an/aus.
+    usage: /togglescoreboard
   test:
     description: Testet das Plugin.
     usage: /test
-  bc:
-    description: Broadcasts to every player.
-    permission: survival.broadcast
-    usage: /bc <Nachricht>
-  level:
-    description: Zeigt das Level eines Spielers.
-    usage: /level <Spieler>
+  spawnvillager:
+    description: Spawnt einen Villager.
+    usage: /spawnvillager <type>
