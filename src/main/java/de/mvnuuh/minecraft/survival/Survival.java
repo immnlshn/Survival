@@ -1,9 +1,11 @@
 package de.mvnuuh.minecraft.survival;
 
 import de.mvnuuh.minecraft.survival.commands.*;
+import de.mvnuuh.minecraft.survival.database.DatabaseHandler;
 import de.mvnuuh.minecraft.survival.listener.BedSleepListener;
 import de.mvnuuh.minecraft.survival.listener.JoinQuitListener;
 import de.mvnuuh.minecraft.survival.listener.ShopHandler;
+import de.mvnuuh.minecraft.survival.utils.Config;
 import de.mvnuuh.minecraft.survival.utils.StorageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,10 +16,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Survival extends JavaPlugin {
     private static Survival instance;
     private static StorageHandler storageHandler;
+    private static Config config;
+    private static DatabaseHandler databaseHandler;
+
+
 
     @Override
     public void onLoad(){
         instance = this;
+        storageHandler = new StorageHandler(Survival.getInstance().getDataFolder(),"config.json");
+        config = (Config) storageHandler.get();
+        databaseHandler = new DatabaseHandler();
     }
 
     @Override
@@ -30,7 +39,6 @@ public final class Survival extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("");
         Bukkit.getConsoleSender().sendMessage("§7--------------------------------------------------------");
         Bukkit.getConsoleSender().sendMessage("§7[§dSurvival§7]§r Initializing configuration file.");
-        storageHandler = new StorageHandler();
         Bukkit.getConsoleSender().sendMessage("§7[§dSurvival§7]§r Initializing listeners.");
         ListenerRegistration();
         Bukkit.getConsoleSender().sendMessage("§7[§dSurvival§7]§r Initializing commands.");
@@ -40,6 +48,7 @@ public final class Survival extends JavaPlugin {
         getCommand("stats").setExecutor(new StatsCommand());
         getCommand("togglescoreboard").setExecutor(new ToggleScoreboardCommand());
         getCommand("spawnvillager").setExecutor(new SpawnVillagerCommand());
+        getCommand("sreload").setExecutor(new reloadCommand());
     }
 
     @Override
@@ -56,5 +65,15 @@ public final class Survival extends JavaPlugin {
 
     public static Survival getInstance() {
         return instance;
+    }
+    public static StorageHandler getStorageHandler() {
+        return storageHandler;
+    }
+    public static Config getConfiguration() {
+        return config;
+    }
+    public static void reloadConfiguration(){
+        storageHandler.open();
+        config = (Config) storageHandler.get();
     }
 }

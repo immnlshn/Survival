@@ -23,3 +23,7 @@ commands:
   spawnvillager:
     description: Spawnt einen Villager.
     usage: /spawnvillager <type>
+  sreload:
+    description: Lädt das Plugin neu.
+    usage: /sreload
+    permission: survival.reload
