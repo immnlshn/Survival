@@ -15,6 +15,6 @@
   - Singleserver [✅]
 - ...
 
-# Requierements
-- Java 16
-- MongoDB
+# 💻 Requierements
+- ☕ Java 16 
+- 📕 MongoDB
